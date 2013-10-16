@@ -45,6 +45,15 @@ describe('Someone wants to convert a number into Roman numerial', function(){
 			}).to.throw(InvalidNumberError);
 		});
 	});
+
+	describe('When they enter -1', function(){
+		it('Then error is returned', function(){
+			var romanNumerialGenerator = new RomanNumerialGenerator();
+			expect(function(){
+				romanNumerialGenerator.generate(-1);
+			}).to.throw(InvalidNumberError);
+		});
+	});
 });
 
 var InvalidNumberError = function(){
@@ -59,7 +68,7 @@ var RomanNumerialGenerator = function(){
 		];
 
 	this.generate = function(number){
-		if (number === 0){
+		if (number <= 0){
 			throw new InvalidNumberError();
 		}
 		return generateNumerial(number);
