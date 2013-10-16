@@ -18,13 +18,13 @@ describe('Someone wants to convert a number into Roman numerial', function(){
 });
 
 var RomanNumerialGenerator = function(){
-	var NUMERIAL_ONE = 'I';
+	var NUMERIALS = {
+			1 : 'I',
+			5 : 'V'
+		};
 
 	this.generate = function(number){
-		if (number === 5){
-			return 'V';
-		}
-		return NUMERIAL_ONE;
+		return NUMERIALS[number];
 	};
 };
 
