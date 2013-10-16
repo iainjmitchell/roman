@@ -32,12 +32,7 @@ describe('Someone wants to convert a number into Roman numerial', function(){
 });
 
 var RomanNumerialGenerator = function(){
-	var NUMERIALS = {
-			1 : 'I',
-			5 : 'V',
-			10 : 'X'
-		},
-		ROMAN_NUMERIALS = [
+	var ROMAN_NUMERIALS = [
 			{ number : 10, symbol : 'X'},
 			{ number : 5, symbol : 'V'},
 			{ number : 1, symbol : 'I'}
