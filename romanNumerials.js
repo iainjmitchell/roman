@@ -36,13 +36,23 @@ var RomanNumerialGenerator = function(){
 			1 : 'I',
 			5 : 'V',
 			10 : 'X'
-		};
+		},
+		ROMAN_NUMERIALS = [
+			{ number : 10, symbol : 'X'},
+			{ number : 5, symbol : 'V'},
+			{ number : 1, symbol : 'I'}
+		];
 
 	this.generate = function(number){
-		if (number === 2){
-			return NUMERIALS[1] + this.generate(1);
+		var count = 0;
+		for(count; count < ROMAN_NUMERIALS.length; count++){
+			var roman_numerial = ROMAN_NUMERIALS[count];
+			if (roman_numerial.number <= number){
+				var nextNumber = number - roman_numerial.number;
+				return roman_numerial.symbol + this.generate(nextNumber);
+			}
 		}
-		return NUMERIALS[number];
+		return '';
 	};
 };
 
