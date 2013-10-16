@@ -11,8 +11,10 @@ describe('Someone wants to convert a number into Roman numerial', function(){
 });
 
 var RomanNumerialGenerator = function(){
+	var NUMERIAL_ONE = 'I';
+
 	this.generate = function(){
-		return 'I';
+		return NUMERIAL_ONE;
 	};
 };
 
