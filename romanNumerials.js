@@ -68,11 +68,15 @@ var RomanNumerialGenerator = function(){
 		];
 
 	this.generate = function(number){
-		if (number <= 0){
+		if (isInvalidNumber(number)){
 			throw new InvalidNumberError();
 		}
 		return generateNumerial(number);
 	};
+
+	function isInvalidNumber(number){
+		return (number <= 0);
+	}
 
 	function generateNumerial(number){
 		var romanNumerial = findHighestRomanNumerial(number);
