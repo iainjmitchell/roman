@@ -22,11 +22,19 @@ describe('Someone wants to convert a number into Roman numerial', function(){
 			romanNumerialGenerator.generate(10).should.equal('X');
 		});
 	});
+
+	describe('When they enter 2', function(){
+		it('Then II is returned', function(){
+			var romanNumerialGenerator = new RomanNumerialGenerator();
+			romanNumerialGenerator.generate(2).should.equal('II');
+		});
+	});
 });
 
 var RomanNumerialGenerator = function(){
 	var NUMERIALS = {
 			1 : 'I',
+			2 : 'II',
 			5 : 'V',
 			10 : 'X'
 		};
