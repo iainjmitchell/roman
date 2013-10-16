@@ -34,7 +34,6 @@ describe('Someone wants to convert a number into Roman numerial', function(){
 var RomanNumerialGenerator = function(){
 	var NUMERIALS = {
 			1 : 'I',
-			2 : 'II',
 			5 : 'V',
 			10 : 'X'
 		};
