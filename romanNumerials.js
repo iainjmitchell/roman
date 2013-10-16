@@ -60,7 +60,8 @@ var InvalidNumberError = function(){
 };
 
 var RomanNumerialGenerator = function(){
-	var ROMAN_NUMERIALS = [
+	var validNumber = new ValidNumberSpecification(),
+		ROMAN_NUMERIALS = [
 			{ number : 10, symbol : 'X'},
 			{ number : 5, symbol : 'V'},
 			{ number : 4, symbol : 'IV'},
@@ -68,15 +69,11 @@ var RomanNumerialGenerator = function(){
 		];
 
 	this.generate = function(number){
-		if (isInvalidNumber(number)){
+		if (!validNumber.isSatisfiedBy(number)){
 			throw new InvalidNumberError();
 		}
 		return generateNumerial(number);
 	};
-
-	function isInvalidNumber(number){
-		return (number <= 0);
-	}
 
 	function generateNumerial(number){
 		var romanNumerial = findHighestRomanNumerial(number);
@@ -96,6 +93,12 @@ var RomanNumerialGenerator = function(){
 			}
 		}
 	}
+};
+
+var ValidNumberSpecification = function(){
+	this.isSatisfiedBy = function(number){
+		return (number > 0);
+	};
 };
 
 
