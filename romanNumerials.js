@@ -40,6 +40,9 @@ var RomanNumerialGenerator = function(){
 		};
 
 	this.generate = function(number){
+		if (number === 2){
+			return NUMERIALS[1] + this.generate(1);
+		}
 		return NUMERIALS[number];
 	};
 };
