@@ -54,6 +54,15 @@ describe('Someone wants to convert a number into Roman numerial', function(){
 			}).to.throw(InvalidNumberError);
 		});
 	});
+
+	describe('When they enter 4000', function(){
+		it('Then error is returned', function(){
+			var romanNumerialGenerator = new RomanNumerialGenerator();
+			expect(function(){
+				romanNumerialGenerator.generate(4000);
+			}).to.throw(InvalidNumberError);
+		});
+	});
 });
 
 var RomanNumerialGenerator = function(){
@@ -98,7 +107,7 @@ var RomanNumerialRepository = function(){
 
 var ValidNumberSpecification = function(){
 	this.isSatisfiedBy = function(number){
-		return (number > 0);
+		return (number > 0 && number < 4000);
 	};
 };
 
