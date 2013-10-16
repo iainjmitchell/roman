@@ -56,17 +56,9 @@ describe('Someone wants to convert a number into Roman numerial', function(){
 	});
 });
 
-var InvalidNumberError = function(){
-};
-
 var RomanNumerialGenerator = function(){
 	var validNumber = new ValidNumberSpecification(),
-		ROMAN_NUMERIALS = [
-			{ number : 10, symbol : 'X'},
-			{ number : 5, symbol : 'V'},
-			{ number : 4, symbol : 'IV'},
-			{ number : 1, symbol : 'I'}
-		];
+		romanNumerials = new RomanNumerialRepository();
 
 	this.generate = function(number){
 		if (!validNumber.isSatisfiedBy(number)){
@@ -76,15 +68,24 @@ var RomanNumerialGenerator = function(){
 	};
 
 	function generateNumerial(number){
-		var romanNumerial = findHighestRomanNumerial(number);
+		var romanNumerial = romanNumerials.findHighestFor(number);
 		if (romanNumerial){
 			var nextNumber = number - romanNumerial.number;
 			return romanNumerial.symbol + generateNumerial(nextNumber);
 		}
 		return '';
 	}
+};
 
-	function findHighestRomanNumerial(number){
+var RomanNumerialRepository = function(){
+	var ROMAN_NUMERIALS = [
+			{ number : 10, symbol : 'X'},
+			{ number : 5, symbol : 'V'},
+			{ number : 4, symbol : 'IV'},
+			{ number : 1, symbol : 'I'}
+		];
+
+	this.findHighestFor = function(number){
 		var count = 0;
 		for(count; count < ROMAN_NUMERIALS.length; count++){
 			var romanNumerial = ROMAN_NUMERIALS[count];
@@ -99,6 +100,9 @@ var ValidNumberSpecification = function(){
 	this.isSatisfiedBy = function(number){
 		return (number > 0);
 	};
+};
+
+var InvalidNumberError = function(){
 };
 
 
