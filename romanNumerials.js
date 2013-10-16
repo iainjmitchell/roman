@@ -15,12 +15,20 @@ describe('Someone wants to convert a number into Roman numerial', function(){
 			romanNumerialGenerator.generate(5).should.equal('V');
 		});
 	});
+
+	describe('When they enter 10', function(){
+		it('Then X is returned', function(){
+			var romanNumerialGenerator = new RomanNumerialGenerator();
+			romanNumerialGenerator.generate(10).should.equal('X');
+		});
+	});
 });
 
 var RomanNumerialGenerator = function(){
 	var NUMERIALS = {
 			1 : 'I',
-			5 : 'V'
+			5 : 'V',
+			10 : 'X'
 		};
 
 	this.generate = function(number){
