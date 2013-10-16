@@ -39,15 +39,24 @@ var RomanNumerialGenerator = function(){
 		];
 
 	this.generate = function(number){
-		var count = 0;
-		for(count; count < ROMAN_NUMERIALS.length; count++){
-			var roman_numerial = ROMAN_NUMERIALS[count];
-			if (roman_numerial.number <= number){
-				var nextNumber = number - roman_numerial.number;
-				return roman_numerial.symbol + this.generate(nextNumber);
-			}
+		var romanNumerial = findHighestRomanNumerial(number);
+		if (romanNumerial){
+			var nextNumber = number - romanNumerial.number;
+			return romanNumerial.symbol + this.generate(nextNumber);
 		}
 		return '';
 	};
+
+	function findHighestRomanNumerial(number){
+		var count = 0;
+		for(count; count < ROMAN_NUMERIALS.length; count++){
+			var romanNumerial = ROMAN_NUMERIALS[count];
+			if (romanNumerial.number <= number){
+				return romanNumerial;
+			}
+		}
+	}
 };
+
+
 
